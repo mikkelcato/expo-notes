@@ -1,1 +1,1 @@
-## random notes on stuff
+## non-course related notes
