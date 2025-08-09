@@ -13,13 +13,14 @@
     ),
   ),
   abstract: [
-    notes on group theory, inspired heavily by Dexter Chua's Cambridge notes -- essentially just these rewritten in Typst with some stuff added/removed.
+    notes on group theory, inspired heavily by Dexter Chua's Cambridge notes---essentially just these rewritten in Typst with some stuff added/removed. I have commented out some of the parts that became less relevant to me over time, otherwise these notes would be very bloated---e.g. some alternating group and Möbius group stuff.
   ],
 )
 
-#pagebreak()
 = Introduction to Groups
 Group theory is what we would call an algebra. An algebra is some structure with operations, defined through a set of axioms. Group theory can be described as the study of symmetries, since the axioms are essentially defined such that symmetries follow them -- or such that sets of symmetries are groups. What rules should this set of symmetries follow? The symmetry of doing nothing is a symmetry, so we should have some identity leaving our object unchanged. Every symmetry should also have a reverse symmetry or inverse, and lastly symmetries should be associative. A group is any set with these properties.
+
+_Note that many parts have been commented out to save space_
 
 #pagebreak()
 = Groups and Homomorphisms
@@ -39,7 +40,7 @@ Group theory is what we would call an algebra. An algebra is some structure with
   + For all $a,b,c in G$ we have
     $ a*(b*c)=(a*b)*c $
 
-  Some include the closure axiom,
+  Some include the closure axiom, (but this follows since $*$ is a binary operation.)
 
   0. For all $a,b in G$ we have $a*b in G$
 ]
@@ -52,7 +53,7 @@ Group theory is what we would call an algebra. An algebra is some structure with
   $ a * b = b * a $
 ]
 Many groups turn out to be Abelian, in the following we'll denote groups as $(A,*)$, with $A$ the set and $*$ the binary operation.
-#ex[][
+#ex[
   The following are Abelian groups
   + $(ZZ, +)$
 
@@ -68,7 +69,7 @@ Many groups turn out to be Abelian, in the following we'll denote groups as $(A,
 ]
 
 Now we'll state and prove our first theorems.
-#thm[][
+#thm[
   Let $(G,*)$ be a group. Then
   + The identity is unique.
 
@@ -78,11 +79,11 @@ Now we'll state and prove our first theorems.
 #proof[
   + Let $e "and" e'$ be identities. Then $e e' = e'$ and $e e' = e$ so immediately $e' = e$.
 
-  + Let $a^(-1) "and" b$ be inverses for som $a in G$. Then $ b=b e = b ( a a^(-1)) = (b a)a^(-1) = e a^(-1) = a^(-1) $
+  + Let $a^(-1) "and" b$ be inverses for some $a in G$. Then $ b=b e = b ( a a^(-1)) = (b a)a^(-1) = e a^(-1) = a^(-1) $
     so $b = a^(-1).$
 ]
 
-#thm[][
+#thm[
   Let $(G,*)$ be a group and $a,b in G$. Then
   + $(a^(-1))^(-1) = a$
 
@@ -133,7 +134,7 @@ Proving that $H$ is actually a subgroup of $G$ is annoying using our definition.
 
   1. Existence of an identity follows from 1. Further $H "and" G$ have the same identity. Let $e_H "and" e_G$ be identities of $H "and" G$. Then $e_H e_H = e_H$. Now, $e_H$ has an inverse in $G$ by definition, so $ e_H e_H e_H^(-1) & =e_H e_H^(-1) \
              e_H e_G & = e_G \
-                 e_H & = e_G $.
+                 e_H & = e_G $
 
   2. Existence of inverses follow from 3.
 ]
@@ -167,7 +168,6 @@ To end this section we'll prove a cool fact.
   It's easy to show that for any $n in NN$, $n ZZ$ is a subgroup. We'll show that these are the only subgroups. Let $H <= ZZ$, we know $0 in H$. If there are no other elements in $H$, then let $H = 0 ZZ$, else pick the smallest positive integer $n$, then $H = n ZZ$. Now we'll proceed by contradiction. Suppose that there exists some $a in H$ with $n divides.not a$. Then we can write $a = p n + q$ with $0 < q < n$. Now since $a in H$ we have $a - p n = q in H$. But $q < n$, so $n$ is not the smallest member of $H$, this is a contradiction. So every $a in H$ is divisible by $n$. Then by closure we must have $H = n ZZ$.
 ]
 
-#pagebreak()
 == Homomorphisms
 We want to define functions between groups.
 
@@ -245,12 +245,12 @@ If we are talking about sets, functions can get very weird. But in group theory 
 ]
 
 #def[Isomorphism][
-  Isomorphisms are just bijective homomorphisms, e.g. those in the previous example. If one exists between to groups they are isomorphic and we write $G tilde.equiv H$
+  Isomorphisms are just bijective homomorphisms, e.g. those in the previous example. If one exists between two groups they are isomorphic and we write $G tilde.equiv H$
 ]
 
 We'll treat isomorphic groups as the same group, since we only really care about the structure not the specific elements. Now we'll prove some theorems.
 
-#thm[][
+#thm[
   Let $f:G arrow H$ be a homomorphism. Then
   + $f(e_G) = e_H$
 
@@ -274,7 +274,7 @@ We'll treat isomorphic groups as the same group, since we only really care about
   3. Let $f:G_1 arrow G_2$ and $g: G_2 arrow G_3$. Then $ g(f(a b)) = g(f(a)f(b)) = g(f(a))g(f(b)) $
 
   4. Let $f: G arrow H$ be an isomorphism. Then $ f^(-1)(a b) & = f^(-1){f(f^(-1)(a))f(f^(-1)(b))} \
-                & = f^(-1) {f(f^(-1)(a)f^(-1)(b)} \
+                & = f^(-1) {f(f^(-1)(a)f^(-1)(b))} \
                 & = f^(-1)(a)f^(-1)(b) $
     so $f^(-1)$ is a homomorphism, and since it is bijective, then it is an isomorphism.
 ]
@@ -294,7 +294,7 @@ We'll treat isomorphic groups as the same group, since we only really care about
 
 #proof[
   We have $e_H = f(e_G) in "im"f$ and $e_G in "ker"f$, so both are non-empty.
-  Let $b_1,b_2 in "im"f$, then there exists $a_1, a_2 in G$ then $f(a_1)=b_1 "and" f(a_2)=b_2$. Then $ b_1 b_2^(-1) = f(a_1)f(a_2^(-1)) =f(a_1 a_2^(-1)) in "im"f $
+  Let $b_1,b_2 in "im"f$, then there exists $a_1, a_2 in G$ such that $f(a_1)=b_1 "and" f(a_2)=b_2$. Then $ b_1 b_2^(-1) = f(a_1)f(a_2^(-1)) =f(a_1 a_2^(-1)) in "im"f $
   since $a_1 a_2^(-1) in G$, so $"im"f <= H$. Now pick $b_1, b_2 in "ker"f$ then $ f(b_1 b_2^(-1)) = f(b_1)f(b_2)^(-1) =e^2 = e $
   so $b_1 b_2^(-1) in "ker"f$, so $"ker"f <= G$.
 
@@ -326,7 +326,6 @@ An important type of subgroup are normal subgroups, these are related to the fol
 
 These definitions will prove useful later on.
 
-#pagebreak()
 == Cyclic groups
 These are the simplest groups.
 #def[Cyclic group $C_n$][
@@ -374,7 +373,6 @@ The following lemma relates our different definitions of order.
   The exponent of a group $G$ is the smallest $n in ZZ$ such that $a^n = e$ for all $a in G$.
 ]
 
-#pagebreak()
 == Dihedral groups
 #def[Dihedral groups $D_(2n)$][
   Dihedral groups are the symmetries of a regular $n"-gon"$. It has $n$ rotations, including the identity and $n$ reflections, i.e. $2n$ elements. We write $D_(2n)$ with $2n$ being the order.
@@ -386,8 +384,6 @@ $
          & = {e, r, r^2, ... r^(n-1), s, r s, r^2 s,...r^(n-1)s}
 $
 so it is generated by $r "and" s$ with the extra "conditions" $r^n=s^2=e "and" s r s^(-1) = s r s = r^(-1)$.
-
-#pagebreak()
 
 == Direct products of groups
 For sets we have $X times Y = {(x,y):x in X, y in Y}$. For groups we do the same.
@@ -420,8 +416,6 @@ Why do this? Imagine if we have one system with symmetries and want to combine i
 It is sometimes useful to write complicated groups as products of other groups.
 
 #thm[Direct product theorem][
-  _important as fuck_
-
   Let $H_1, H_2 <= G$, suppose the following are true
   1. $H_1 inter H_2 = {e}$.
 
@@ -442,7 +436,6 @@ It is sometimes useful to write complicated groups as products of other groups.
 
 #pagebreak()
 = Symmetric group
-==
 When we talk about symmetries we mean bijections. Any arbitrary bijection $X arrow X$ is a symmetry of $X$. The set of all bijections form a group, namely the symmetric group.
 
 #def[Permutation][
@@ -467,7 +460,16 @@ When we talk about symmetries we mean bijections. Any arbitrary bijection $X arr
   If $X$ is finite, $|X| = n$ and typically $X = {1,2,...,n}$, we let $"Sym"X = S_n$. This is the symmetric group of degree $n$.
 ]
 
-Note that degree and order of $S_n$ aren't the same thing, since the order would refer to the number of permutations and not the order of $X$, in general $S_n$ would have order $n!$. We can write permutations in a couple of ways. One way is two row notation
+#def[Permutation group][
+  A group $G$ is a permutation group if it is a subgroup of $"Sym"X$ for some $X$. We say $G$ is of order $n$ if $|X|=n$.
+
+  Pretty much all groups turn out to be isomorphic to some permutation group.
+]
+
+Note that degree and order of $S_n$ aren't the same thing, since the order would refer to the number of permutations and not the order of $X$, in general $S_n$ would have order $n!$.
+
+/*
+We can write permutations in a couple of ways. One way is two row notation
 $ mat(1, 2, 3, dots, n; sigma(1), sigma(2), sigma(3), ..., sigma(n)) $
 #ex[
   For small $n$
@@ -525,14 +527,16 @@ In general $D_(2n) <= S_n$ since each symmetry is a permutation of corners. Anot
 ]
 #proof[
   We write $hash(sigma)$ for the number of cycles in disjoint cycle notation, including singletons, e.g $hash(e)=n "and" hash((12))=n-1$. Now, when we multiply $sigma$ by a transposition $tau = (c d)$ assuming $c < d$
-  1. if $c,d$ are in the same cycle the our cycle splits giving $hash(sigma tau) = hash(sigma)+1$.
+  1. if $c,d$ are in the same cycle then our cycle splits giving $hash(sigma tau) = hash(sigma)+1$.
 
   2. if $c,d$ are in different cycles then our cycle gets glued together giving $hash(sigma tau)=hash(sigma)-1$.
   So any $tau$ gives $hash(sigma tau)=hash(sigma)+1 "(mod "2)$. Now let $sigma = tau_1 dots tau_l = tau_1' dots tau_k'$, since disjoint cycle notation is unique, $hash(sigma)$ is uniquely determined by $sigma$. Now we can construct $sigma$ by starting with $e$ and multiplying by transpositions one by one. Each time we increase $hash(sigma)$ by $1 "(mod "2)$. So $hash(sigma) = hash(e)+l "(mod "2)$. And $hash(sigma) = hash(e)+k "(mod "2)$, so $l equiv k "(mod "2)$.
 ]
+*/
 #def[Sign of permutation][
   Given $sigma=tau_1 dots tau_l in S_n$ we define $"sgn"(sigma)=(-1)^l$. If $"sgn"(sigma)=1$ then we say $sigma$ is even. If $"sgn"(sigma)=-1$ then $sigma$ is odd.
 ]
+/*
 
 #thm[
   For $n >= 2$ $"sgn":S_n arrow {plus.minus 1}$ is a surjective group homomorphism.
@@ -548,22 +552,26 @@ In general $D_(2n) <= S_n$ since each symmetry is a permutation of corners. Anot
 #proof[
   A $k$-cycle can be written as $k-1$ transpositions, so an even-length cycle is odd. $"sgn"$ is a homomorphism so $ sigma = sigma_1 sigma_2 dots sigma_l arrow "sgn"(sigma)="sgn"(sigma_1)dots"sgn"(sigma_l) $ if $m$ even-length cycles and $n$ odd-length cycles, then $"sgn"(sigma)=(-1)^m 1^n$. So $"sgn"(sigma) = 1$ iff $(-1)^m = 1$, i.e. $m$ is even.
 ]
+*/
 #def[Alternating group $A_n$][
   The alternating group $A_n$ is $"ker"("sgn")$, i.e. the even permutations. Also since $A_n$ is a kernel then $A_n <= S_n$.
 ]
+/*
+
 #thm[
   Any subgroup of $S_n$ contains no odd permutations or exactly half.
 ]
 #proof[
   If $S_n$ has at least one odd permutation $tau$ then there exists a bijection between odd and even permutations by $sigma |-> sigma tau$, so there must be as many odd permutations as even permutations.
 ]
+*/
 #pagebreak()
 
 = Lagrange's Theorem
 #def[Cosets][
   Let $H <= G$ and $a in G$. Then the set $a H = {a h : h in H}$ is the left coset of $H$ and $H a = {h a: h in H}$ is the right coset of $H$
 ]
-We will try to think of stuff in the same coset as the same thing, so $a$ is equivalent to its coset $a H$.
+We will try to think of stuff in the same coset as the same thing, so $a$ is equivalent to its coset $a H$---it's worth mentioning that for any $g in G$ we always have $g in g H$, since $e in H$.
 #ex[
   1. Let $2 ZZ <= ZZ$ then $6 + 2 ZZ = {"all even numbers"} = 0 + 2ZZ$ and $1 + 2 ZZ = {"all odd numbers"} = 17 + 2 ZZ$.
 
@@ -592,8 +600,6 @@ We will try to think of stuff in the same coset as the same thing, so $a$ is equ
   The index of $H$ in $G$, written $|G : H|$ is the number of left cosets of $H$ in $G$.
 ]
 #thm[Lagrange's theorem][
-  _important as fuck_
-
   If $G$ is a finite group and $H$ is a subgroup of $G$, then $|H|$ divides $|G|$, in particular $ |H| |G:H|=|G| $
 ]
 #proof[
@@ -605,7 +611,7 @@ Now we get a bunch of free corollaries.
   The order of an element divides the order of the group, i.e for any $a in G$ $"ord"(a)$ divides $|G|$.
 ]
 #proof[
-  Consider the subgroup generated by $a in G$, this has $"ord"(a)$, by Lagrange's theorem the result immediately follows.
+  Consider the subgroup generated by $a in G$, this has size $"ord"(a)$, by Lagrange's theorem the result immediately follows.
 ]
 #corollary[
   The exponent of a group divides the order of the group, i.e. for any $G$ and $a in G$ we have $a^(|G|)=e$
@@ -640,7 +646,7 @@ Now we'll shift our focus to equivalence classes.
   By definition we have $a in [a]$. So equivalence classes trivially cover the set. Now we need to show that for all $a,b in A$ either $[a]=[b]$ or $[a] inter [b] = emptyset$. Assume $[a] inter [b] eq.not emptyset$, then there exists some $c in [a] inter [b]$, so $a tilde c$ and $b tilde c$, then by symmetry and transitivity we have $a tilde b$. Further for all $b' in [b]$ we have $b tilde b'$ and for all $a' in [a]$ we have $a tilde a'$. So we have both $[b] subset.eq [a]$ and $[a] subset.eq [b]$ so $[a] = [b]$.
 ]
 #lemma[
-  Given a group $G$ and a subgroup $H$, we define a equivalence relation on $G$ with $a tilde b$ iff $b^(-1)a in H$. Equivalence classes are the left cosets of $H$.
+  Given a group $G$ and a subgroup $H$, we define a equivalence relation on $G$ with $a tilde b$ iff $b^(-1)a in H$, i.e. if $a H = b H$. So the equivalence classes are the left cosets of $H$.
 ]
 #proof[
   First we show that this is a valid equivalence relation.
@@ -654,14 +660,14 @@ Now we'll shift our focus to equivalence classes.
 #ex[
   Consider $(ZZ,+)$ and take the subgroup $n ZZ$ (fixed $n$). The cosets are $0 + H, 1+H,...(n-1)+H$. These can be written as $[0],[1],...[n]$. We can perform arithmetic $"(mod "n)$ as $[a]+[b]=[a+b]$, and $[a][b]=[a b]$. This is well defined, i.e. whichever $a_i$ we pick we get the same result.
 ]
-We'll let $U_n = {[a]:(a,n)=1}$ (units), only allowing elements with inverses.
+We'll let $U_n = {[a]:(a,n)=1}$ (units), only allowing elements with inverses, where $(a,n) = gcd(a, n)$.
 
 #def[Euler totient function][
   $phi(n)$ counts the number of integers $1 <= a <= n$ such that $(a,n)=1$. Each $a$ gives an equivalence class $[a]$ or unit. Thus the number of units $|U_n|$ is $phi(n)$
   $ phi(n)=|U_n| $
 ]
 #ex[
-  If $p$ prime then $phi(p)=p-1$
+  If $p$ prime then $phi(p)=p-1$, since every integer has $gcd(a, p) = 1$, except $gcd(p, p) eq.not 1$.
 ]
 #thm[
   $U_n$ is a group under multiplication $"mod" n$
@@ -676,8 +682,6 @@ We'll let $U_n = {[a]:(a,n)=1}$ (units), only allowing elements with inverses.
   3. Associativity (and commutativity) is inherited from $ZZ$.
 ]
 #thm[Fermat-Euler Theorem][
-  _important as fuck_
-
   Let $n in NN$ and $a in ZZ$ coprime to $n$. Then
   $ a^(phi(n))equiv 1 "(mod "n) $
   in particular (Fermat's Little Theorem), if $n = p$ is prime, then for any $a$ not a multiple of $p$
@@ -686,7 +690,7 @@ We'll let $U_n = {[a]:(a,n)=1}$ (units), only allowing elements with inverses.
 #proof[
   Since $a$ is coprime with $n$, $[a] in U_n$. Then $[a]^(|U_n|)=[1]$, which is just $a^(phi(n))equiv 1 "(mod "n)$. Where we've used that the order of any element divides the order of the group (Lagrange's theorem), and then simply picked the largest possible order which is $|U_n|$.
 ]
-#pagebreak()
+
 == Small groups
 Lagrange's theorem lets us find subgroups. Consider $D_(10)$, we know the subgroups must have size $1,2,5 "or" 10$.
 1. This is just ${e}$.
@@ -731,7 +735,7 @@ Note that ${e} "and" G$ are always normal.
 #proof[
   1. If $K <= G$ has index $2$, then we have two distinct left cosets. One must be $K$ itself, with the other being $g K$ for some $g in.not K$. Similarly for the right cosets we have $K$ and $K g$. So we have $ {K, g K} = {K, K g} => g K = K g $ for all $g in G$.
 
-  2. If $G$ Abelian than for any $a in G$ and $k in K$ we have $ a k a^(-1) = a a^(-1)k = k in K $.
+  2. If $G$ Abelian than for any $a in G$ and $k in K$ we have $ a k a^(-1) = a a^(-1)k = k in K $
 ]
 
 #thm[
@@ -747,7 +751,7 @@ Note that ${e} "and" G$ are always normal.
 ]
 
 #proof[
-  Let $|G| = 6$. By Lagrange's theorem the possible element orders are $1,2,3 "and" 6$. If we have some $a in G$ of order $6$ then $G = angle.l a angle.r tilde.equiv C_6$. Otherwise we only have elements of orders $2$ and $3$ other then $e$. Suppose every element has order $2$. We'll now show that such a group must have order $2^n$. Consider the minimal generating set of such a group $ S = {g_1,g_2,...g_n} "with" g_i^2=e $ since this is the minimal generating set any element of the set can be written as $g_1^(i_1)g_2^(i_2)dots g_n^(i_n)$ with $i_j = {0,1}$ since $g_i^2 = g_i^0=e "and" g_i^1 = g_i$. Thus the possible number of elements given this generating set is $2^n$. Since $|G| = 6$ which is not a power of $2$ then every element can't have order $2$. So some element $r$ must have order $3$, and further $angle.l r angle.r lt.tri G$ since it will have index $2$. And since the order of $|G|$ is even then it must have an element $s$ of order $2$. To see this let $|G|=2n$, consider the set $S$ of all elements $g in G$ with $g eq.not g^(-1)$, this set clearly has an even amount of elements. Now consider all other elements, i.e. all $g in G$ with $g^2 = e$, we know this contains the identity. Now since $|G| "and" |S|$ are both even, then the rest must also be even, i.e. there must be at least one non-identity element satisfying $g^2=e$, i.e. one element of order $2$. $angle.l r angle.r$ is normal so $s r s^(-1) in angle.l r angle.r$. If $s r s^(-1) =e$ then $r = e$, which is not true. If $s r s^(-1) = r => s r = r s$, and $s r$ has order $6$ ($3 times 2$), which is not possible. Lastly if $s r s^(-1) = r^2 = r^(-1)$ then $G$ is dihedral by definition.
+  Let $|G| = 6$. By Lagrange's theorem the possible element orders are $1,2,3 "and" 6$. If we have some $a in G$ of order $6$ then $G = angle.l a angle.r tilde.equiv C_6$. Otherwise we only have elements of orders $2$ and $3$ other than $e$. Suppose every element has order $2$. We'll now show that such a group must have order $2^n$. Consider the minimal generating set of such a group $ S = {g_1,g_2,...g_n} "with" g_i^2=e $ since this is the minimal generating set any element of the set can be written as $g_1^(i_1)g_2^(i_2)dots g_n^(i_n)$ with $i_j = {0,1}$ since $g_i^2 = g_i^0=e "and" g_i^1 = g_i$. Thus the possible number of elements given this generating set is $2^n$. Since $|G| = 6$ which is not a power of $2$ then every element can't have order $2$. So some element $r$ must have order $3$, and further $angle.l r angle.r lt.tri G$ since it will have index $2$. And since the order of $|G|$ is even then it must have an element $s$ of order $2$. To see this let $|G|=2n$, consider the set $S$ of all elements $g in G$ with $g eq.not g^(-1)$, this set clearly has an even amount of elements---since every element pairs up with its inverse. Now consider all other elements, i.e. all $g in G$ with $g^2 = e$, we know this contains the identity. Now since $|G| "and" |S|$ are both even, then the rest must also be even, i.e. there must be at least one non-identity element satisfying $g^2=e$, i.e. one element of order $2$. $angle.l r angle.r$ is normal so $s r s^(-1) in angle.l r angle.r$. If $s r s^(-1) =e$ then $r = e$, which is not true. If $s r s^(-1) = r => s r = r s$, and $s r$ has order $6$ ($3 times 2$), which is not possible. Lastly if $s r s^(-1) = r^2 = r^(-1)$ then $G$ is dihedral by definition.
 
 ]
 
@@ -799,11 +803,9 @@ Note that the kernel of the quotient map is $K$, and thus any normal subgroup is
   Let $G = C_n$ with $H <= C_n$, we know that $H$ is also cyclic. Say $C_n = angle.l c angle.r$ and $H = angle.l c^k angle.r tilde.equiv C_l$ with $k l = n$. We get $C_n \/ H = {H, c H, c^2 H, ... c^(k-1)H} = angle.l c H angle.r tilde.equiv C_k$.
 ]
 
-== The Isomorphism Theorem
-_important as fuck_
-
-#thm[The Isomorphism Theorem][
-  Let $f: G arrow H$ be a group homomorphism with kernel $K$. Then $K lt.tri G$ and $ G\/K tilde.equiv "im"f $.
+== The Isomorphism Theorems
+#thm[First Isomorphism Theorem][
+  Let $f: G arrow H$ be a group homomorphism with kernel $K$. Then $K lt.tri G$ and $ G\/K tilde.equiv "im"f $ or $ G\/ker f tilde.equiv im f $
 ]
 
 #proof[
@@ -818,6 +820,12 @@ If $f$ is injective, then we know the kernel is just ${e}$, so $G\/K tilde.equiv
   2. Let $theta: (RR,+) arrow (CC^*,times)$ with $r |-> exp(2 pi i r)$. This is a homomorphism since $theta(r + s) = exp(2 pi i(r+ s))=exp(2 pi i r)exp(2 pi i s)=theta(r)theta(s)$. Clearly the kernel is $ZZ lt.tri RR$ and the image is the unit circle $(S_1, times)$. So by the isomorphism theorem $RR\/ZZ tilde.equiv (S_1,times)$.
 
   3. Let $G = (ZZ_p^*,times)$ for prime $p eq.not 2$.  We have $f : G arrow G$ with $a |-> a^2$. This is a homomorphism since $(a b)^2 = a^2 b^2$, due to $ZZ_p^*$ being Abelian. The kernel is ${plus.minus 1}={1,p-1}$ (remember we work in mod $p$), i.e. of order $2$. So by the isomorphism theorem we know $"im"f tilde.equiv G\/"ker"f$ with order $(p-1)/2$, these are known as quadratic residues.
+
+  4. Since $A_n lt.tri S_n$ we find
+  $
+    S_n \/ A_n tilde.equiv im sgn = {plus.minus 1}
+  $
+  except for $n=1$, so $A_n$ has index $2$.
 ]
 
 #lemma[
@@ -834,34 +842,198 @@ If $f$ is injective, then we know the kernel is just ${e}$, so $G\/K tilde.equiv
   3. $"ker"f = n ZZ$, since these are the only proper subgroups of $ZZ$, then $G tilde.equiv ZZ\/(n ZZ)$.
 ]
 
-#def[Simple group][
-  A group is simple if it has no non-trivial proper normal subgroup, i.e. only ${e} "and" G$ are normal subgroups.
+#thm[Second Isomorphism Theorem][
+  Let $H <= G$ and $K lt.tri G$. Then $H K = {h dot k: h in H, k in K}$ is a subgroup of $G$, and $H inter K lt.tri H$. Moreover,
+  $
+    (H K) / K tilde.equiv H / (H inter K)
+  $
+]
+#proof[
+  First we prove $H K$ is a subgroup of $G$. Let $h k, h' k' in H K$, then
+  $
+    h' k' (h k)^(-1) = h' k' k^(-1) h^(-1) = (h' h^(-1))(h k' k^(-1) h^(-1))
+  $
+  the first term is in $H$, and the second is $k' k^(-1) in K$ conjugated by $h$, which is also in $K$ since it is a normal subgroup. So we have something in $H$ times something in $K$, so it is in $H K$. $H K$ also contains $e$, so it is non-empty and therefore a subgroup.
+
+  Now we prove $H inter K lt.tri H$. Let $x in H inter K$ and $h in H$. Consider $h^(-1) x h$. Since $x in K$ normality of $K$ implies $h^(-1) x h in K$. Since $x, h in H$ closure implies $h^(-1) x h in H$, so $h^(-1) x h in H inter K$---note that any intersection of subgroups is trivially a subgroup, since in this case $a, b in H inter K => a, b in H, a, b in K => a b in H, a b in K => a b in H inter K$, and $a in H inter K => a in H, a in K => a^(-1) in H, a^(-1) in K => a^(-1) in H inter K$.
+
+  Now we prove the theorem proper. We do this using the first isomorphism theorem, first define
+  $
+    phi : H & arrow G\/K \
+          h & |-> h K
+  $
+  this is a homomorphism,
+  $
+    phi(h dot h') & = (h dot h' ) K \
+                  & = h K h' K \
+                  & = phi(h) phi(h')
+  $
+  We apply the first isomorphism theorem to this homomorphism. The image is all cosets $h K$ with $h in H$. So the $K$-cosets form a quotient group made from the group of all elements $h k in H K$, i.e.
+  $
+    im phi = (H K)/K
+  $
+  and the kernel is
+  $
+    ker phi = {h in H: h K = e K} = {h in H: h in K} = H inter K
+  $
+  so by the first isomorphism theorem
+  $
+    H/(H inter K) tilde.equiv (H K)/K
+  $
 ]
 
+This shows that we didn't really need to show that $H inter K$ is normal, since it must be a normal subgroup because it is a kernel.
+
+#thm[Correspondence Theorem][
+  If $K lt.tri G$ then there is a bijection between subgroups of $G\/K$ and subgroups of $G$ containing $K$, given by the quotient map $pi : G arrow G\/K, g |-> g K$:
+  $
+    {"subgroups of" G\/K} & <--> {"subgroups of" G "which contain" K} \
+                 X <= G/K & --> {g in G : g K in X} \
+               L/K <= G/K & <-- K lt.tri L <= G
+  $
+  this also works for normal subgroups
+  $
+    {"normal subgroups of" G\/K} <--> {"normal subgroups of" G "which contain" K}
+  $
+  with the same bijection.]
+#proof[
+  Let $X <= G\/K$. $X$ is a subgroup so it contains the identity $e K = K$, so $K = pi^(-1) ({K}) <= pi^(-1) (X)$. We check $pi^(-1) (X)$ is a subgroup. Let $a, b in pi^(-1) (X)$, then $pi(a) = a K in X, pi(b) = b K in X$. $X$ is a subgroup so $a K b K = (a b) K in X$, so $a b in pi^(-1) (X)$. Similarly $a K in X => (a K)^(-1) = a^(-1) K in X$ so $a^(-1) in pi^(-1) (X)$. Therefore $pi^(-1) (X) <= G$. So $pi^(-1) (X)$ is a subgroup of $G$ which contains $K$.
+
+  Let $L <= G$ with $K lt.tri L$ then $L\/K = {g K : g in L} subset.eq G\/K$.
+  $L\/K$ contains the identity $K$ since $e in L$. And is closed, and has inverses since $g K, h K in L\/K => (g K)(h K) = (g h) K in L\/K$ and $(g K)^(-1) = g^(-1) K in L\/K$, so $L\/K <= G\/K$.
+
+  We want to show these are inverses. Let $X <= G\/K$ then
+  $
+    pi^(-1)(X) \/K = {g K : g in pi^(-1) (X)} = X
+  $
+  since by definition $g in pi^(-1) (X) <=> g K in X$. Let $L <= G$, $K lt.tri L$. Then
+  $
+    pi^(-1) (L\/K) = {g in G : g K in L\/K} = {g in G : g K = l K, l in L}
+  $
+  since $g K = l K$, this implies $l^(-1) g in K subset.eq L$, so
+  $
+    g = l(l^(-1) g) in L
+  $
+  so $pi^(-1) (L\/K) = L$
+]
+
+#thm[Third Isomorphism Theorem][
+  Let $K <= L <= G$ be normal subgroups of $G$. Then
+  $
+    G/K \/ L/K tilde.equiv G/L
+  $
+]
+#proof[
+  Define the homomorphism
+  $
+    phi: G\/K & -> G\/L \
+          g K & |-> g L
+  $
+  we check this is well-defined. If $g K = g' K$, then $g^(-1) g' in K subset.eq L$, so $g L = g' L$. It is a homomorphism since
+  $
+    phi (g K g' K) = phi (g g' K) = g g' L = g L g' L = phi(g K) phi(g' K)
+  $
+  this is surjective since any coset $g L$ is the image $phi (g K)$. This also makes the image $G\/L$. The kernel is
+  $
+    ker phi = {g K : g L = L} = {g K : g in L} = L\/K
+  $
+  then the theorem follows by the first isomorphism theorem.
+
+]
+
+#def[Simple group][
+  A group is simple if it has no non-trivial proper normal subgroups, i.e. only ${e} "and" G$ are normal subgroups.
+]
+
+The simple groups are typically very annoying and complicated.
 #ex[
   $C_p$ for prime $p$ are simple groups since it has no proper subgroups, and then by obviousness no normal ones.
 ]
-
 The finite simple groups are what make up all finite groups, and all of these have been classified. If $K lt.tri G$ with $K eq.not G "or" {e}$ then we can quotient out $G$ into $G\/K$, if $G\/K$ is not simple, then just repeat. Then $G$ can be written as an inverse quotient of simple groups.
+
+Since all Abelian groups have normal subgroups, these are only simple if they have no non-trivial subgroups at all.
+
+#lemma[
+  An Abelian group is simple if and only if it is isomorphic to the cyclic group $C_p$ for some prime $p$.
+]
+#proof[
+  By Lagrange's theorem, any subgroup of $C_p$ has order dividing $|C_p| = p$. So if $p$ prime, then it has no divisors, and any subgroup must have order $1$ or $p$, i.e. it is either ${e}$ or $C_p$. So any normal subgroup must be ${e}$ or $C_p$---so it is simple.
+
+  Now let $G$ be Abelian and simple. Let $e eq.not g in G$ be a non-trivial element, and consider $H = {dots, g^(-2), g^(-1), e, g, g^2, dots}$. Since $G$ Abelian, conjugation does nothing and every subgroup is normal. So $H$ is a normal subgroups. As $G$ is simple, $H = {e}$ or $H = {G}$. Since it contains $g eq.not e$ it is non-trivial. So we must have $H = G$. So $G$ is cyclic.
+
+  If $G$ is infinite cyclic, then it is isomorphic to $ZZ$, but $ZZ$ is not simple, since $2 ZZ lt.tri ZZ$. So $G$ is a finite cyclic group, i.e. $G tilde.equiv C_m$ for some finite $m$. If $n$ divides $m$ then $g^(m\/n)$ generates a subgroup of $G$ of order $n$. This is a normal subgroup, so $n = {1, m}$. Hence $G$ cannot be simple unless $m$ has no divisors except $1$ and $m$, i.e. $m = p$.
+]
+
+#thm[
+  Let $G$ be any finite group. Then there are subgroups
+  $
+    G = H_1 gt.tri H_2 gt.tri dots gt.tri H_n = {e}
+  $
+  such that $H_i \/ H_(i+1)$ is simple.
+]
+
+#proof[
+  If $G$ simple, let $H_2 = {e}$ and we are done.
+
+  If $G$ not simple, let $H_2$ be a maximal proper normal subgroup of $G$---we claim that $G \/ H_2$ is simple.
+
+  If $G\/H_2$ not simple, then it has a non-trivial normal subgroup $L lt.tri G \/ H_2$ with $L eq.not {e}, G\/H_2$. But there is a correspondence between normal subgroups of $G\/H_2$ and normal subgroups of $G$ containing $H_2$, so $L$ must be $K\/H_2$ for some $K lt.tri G$ such that $K >= H_2$. Since $L$ is non-trivial and not $G\/H_2$, we know $K$ is not $G$ or $H_2$. So $K$ is a larger normal subgroup---this is a contradiction, thus $G\/H_2$ is simple.
+
+  We can iterate this on $H_2$ to prove the theorem. This stops eventually since $H_(i+1) < H_i => |H_(i+1)| < |H_i|$ and all numbers are finite.
+]
+This theorem essentially says that we can always reduce a group into something simple.
 
 #pagebreak()
 = Group actions
-== Group acting on sets
+== Definition
+If $G <= "Sym"X$, then every $g in G$ should give us a permutation of $X$, in some consistent manner. We say that $G$ acts on $X$---this can be defined in multiple equivalent ways.
 #def[Group action][
-  Let $X$ be a set and $G$ be a group. An action of $G$ on $X$ is a homomorphism $phi:G arrow "Sym"X$.
+  An action of a group $(G, dot)$ on a set $X$ is a function
+  $
+    * : G times X arrow X
+  $
+  such that
+  1. For all $x in X$ then $e * x =x$
+
+  2. For all $g_1, g_2 in G$ and $x in X$ then $g_1 * (g_2 * x) = (g_1 dot g_2) * x$.
 ]
-So the group action $phi$ turns each $g in G$ into a permutation of $X$, while respecting group structure. We write $phi(g)(x)=g(x)=g x$.
 
-#thm[
-  Let $X$ be a set and $G$ be a group. Then $phi : G arrow "sym"X$ is a homomorphism (an action) iff $theta: G times X arrow X$ defined by $theta(g, x) = phi(g)(x)$ satisfies
+#lemma[
+  An action of $G$ on $X$ is equivalent to a homomorphism $phi : G arrow "Sym"X$.
+]
+#proof[
+  Let $* : G times X arrow X$ be an action. Define $phi : G arrow "Sym"X$ by sending $g$ to the function $phi(g) = (g * dot: X arrow X)$. This is a permutation, $g^(-1) * dot$ is an inverse
+  $
+    phi(g^(-1))(phi(g)(x)) = g^(-1) * (g * x) = (g^(-1) dot g) * x = e * x = x
+  $
+  similarly shows $phi(g) compose phi(g^(-1)) = "id"_X$, so $phi$ is well-defined.
 
-  0. For all $g in G "and" x in X$ then $theta(g, x) in X$.
+  To show it is a homomorphism
+  $
+    phi(g_1)(phi(g_2)(x)) = g_1 * (g_2 * x) = (g_1 dot g_2) * x = phi(g_1 dot g_2)(x)
+  $
+  this is true for all $x in X$, so $phi(g_1) compose phi(g_2) = phi(g_1 dot g_2)$. And $phi(e)(x) = e * x = x$, so $phi(e)$ is the identity.
 
-  1. For all $x in X$ then $theta(e, x)=x$
+  Now we do the same backwards, given a homomorphism $phi : G arrow "Sym"X$, define $g*x = phi(g)(x)$. We check it is a group action. We know
+  $
+    g_1 * (g_2 * x) = phi(g_1)(phi(g_2)(x)) = (phi(g_1) compose phi(g_2))(x) = phi(g_1 dot g_2)(x) = (g_1 dot g_2) * x
+  $
+  and
+  $
+    e*x = phi(e)(x) = "id"_X (x) = x
+  $
+  so this homomorphism gives a group action.
+]
+This gives us the representation:
+#def[Permutation representation][
+  Let $X$ be a set and $G$ be a group. A permutation representation of $G$ is a homomorphism $phi:G arrow "Sym"X$.
+]
 
-  2. For all $g, h in G$ and $x in X$ then $theta(g, theta(h, x))=theta(g h, x)$
+We might write $G^X = im phi$ and $G_X = ker phi$, thus by the first isomorphism theorem:
+#corollary[
+  $G_X lt.tri G$ and $G\/G_X tilde.equiv G^X$.
 
-  this is almost the definition of a isomorphism, but we don't require explicitly that $theta(g, dot)$ is a bijection, but we require $theta(e, dot)$ is the identity function. This automatically ensures that $theta(g, dot)$ is a bijection, since when composed with $theta(g^(-1), dot)$ we get $theta(e, dot)$, so inverses exist.
+  In particular if $G_X = {e}$ then $G tilde.equiv G^X <= "Sym"X$
 ]
 
 #ex[
@@ -879,7 +1051,6 @@ So the group action $phi$ turns each $g in G$ into a permutation of $X$, while r
 #def[Kernel of action][
   The kernel of an action $G$ on $X$ is the kernel of $phi$, i.e. all $g$ such that $phi(g)=1_X$.
 ]
-By the isomorphism theorem $"ker"phi lt.tri G$, and $G\/K$ is isomorphic to a subgroup of $"Sym"X$.
 
 #ex[
   1. $D_(2n)$ acting on ${1,2 dots n}$ gives $phi:D_(2n) arrow S_n$ with kernel ${e}$. (since $S_n$ are the symmetries of ${1,2 dots n}$). Each element in $D_(2n)$ can be thought of as inducing a permutation of ${1,2,dots n}$, the collection of which is $S_n$, so some $g in D_(2n)$ gets mapped to a $g' in S_n$, though not necessarily all elements in $S_n$ have something mapped to them. The only $g in D_(2n)$ which doesn't permute any ${1,2 dots n}$ is $e$ so the kernel is ${e}$.
@@ -893,10 +1064,10 @@ By the isomorphism theorem $"ker"phi lt.tri G$, and $G\/K$ is isomorphic to a su
 
 == Orbits and Stabilizers
 #def[Orbit of action][
-  Given an action $G$ on $X$, the orbit of an element $x in X$ is $ "orb"(x) = G(x) = {y in X: exists g in G "with" g(x)=y} $ i.e. it is all the elements $y in X$ that $x$ can be sent to with the action $G$.
+  Given an action $G$ on $X$, the orbit of an element $x in X$ is $ "orb"(x) = G(x) = G dot x = {g(x)=g*x in X:g in G} $ i.e. it is all the elements $g*x in X$ that $x$ can be sent to with the action $G$.
 ]
 #def[Stabilizer of action][
-  The stabilizer of $x$ is $ "stab"(x) = G_x = {g in G:g(x)=x} subset.eq G $ i.e. it is all elements in $G$ that leave $x$ alone.
+  The stabilizer of $x$ is $ "stab"(x) = G_x = {g in G:g(x)=g*x=x} subset.eq G $ i.e. it is all elements in $G$ that leave $x$ alone.
 ]
 #lemma[
   $"stab"(x) <= G$
@@ -926,8 +1097,6 @@ By the isomorphism theorem $"ker"phi lt.tri G$, and $G\/K$ is isomorphic to a su
 Consider a group $G$ acting on $X$, we fix some $x in X$. Then by definition given any $g in G$ we have $g(x) in "orb"(x)$. So every $g in G$ gives us a member of $"orb"(x)$. Likewise every object in $"orb"(x)$ arises this way by definition. But different elements in $G$ can give the same orbit. Consider $g in "stab"(x)$, then $h g$ and $h$ give the same object in $"orb"(x)$ since $h g(x) = h(g(x))=h(x)$. So we have a correspondence between things in $"orb"(x)$ and members of $G$ _up to_ $"stab"(x)$.
 
 #thm[Orbit-stabilizer theorem][
-  _important as fuck_
-
   Let $G$ act on $X$, then there is a bijection between $"orb"(x)$ and cosets of $"stab"(x)$ in $G$. In particular if $G$ is finite then $ |"orb"(x)||"stab"(x)| = |G| $
 ]
 
@@ -946,7 +1115,7 @@ This theorem is quite useful, and can be especially nice for determining group s
   3. Consider $S_4$ acting on ${1,2,3,4}$. We know that $"orb"(1)=X$ and $|S_4|=4!=24$. So $|"stab"(1)|=24/4=6$, this makes our job easier if we want to find $"stab"(1)$. Obviously $S_{2,3,4} tilde.equiv S_3$ fix 1, so $S_{2,3,4} <= "stab"(1)$. However $|S_3|=6=|"stab"(1)|$, so this is the entire stabilizer.
 ]
 
-== Important actions
+== Important actions and conjugacy
 #lemma[Left regular action][
   Any group $G$ acts on itself by left multiplication. This action is faithful and transitive.
 ]
@@ -968,7 +1137,7 @@ This theorem is quite useful, and can be especially nice for determining group s
 ]
 
 #lemma[Left coset action][
-  Let $H <= G$, then $G$ acts on the left cosets of $H$ by left multiplication transitively.
+  Let $H <= G$, then $G$ acts on the left cosets of $H$ by left multiplication transitively---i.e. $X = G\/H$.
 ]
 
 #proof[
@@ -979,6 +1148,53 @@ This theorem is quite useful, and can be especially nice for determining group s
   Now given $a H$ and $b H$ we know $(b a^(-1))(a H) = b H$, so any $a H$ can be mapped to $b H$, and it is transitive.
 ]
 Note that his reduces to the left regular action if $H = {e}$ since $G\/{e} tilde.equiv G$.
+
+Consider $G_X = ker phi$ for the left coset action. If $g in G_X$, then for every $g_1 in G$, we have $g*g_1 H = g_1 H$ so $g_1^(-1) g g_1 in H$, or $g in g_1 H g_1^(-1)$. This is true for all $g_1 in G$ so
+$
+  G_X subset.eq inter.big_(g_1 in G) g_1 H g_1^(-1)
+$
+this is also reversible i.e. if $g in inter_(g_1 in G) g_1 H g_1^(-1)$ then for each $g_1 in G$ we have
+$
+  g_1^(-1) g g_1 in H => g g_1 H = g_1 H => g * g_1 H = g_1 H => g in G_X
+$
+so we get
+$
+  ker phi = G_X = inter.big_(g_1 in G) g_1 H g_1^(-1)
+$
+given this is a kernel it is also a normal subgroup of $G$ and is contained in $H$. Thus given any subgroup $H$, we can generate a normal subgroup, and this will be the biggest normal subgroup of $G$ in $H$.
+
+#thm[
+  Let $G$ be a finite group, and $H <= G$ a subgroup of index $n$. Then there is a normal subgroup $K lt.tri G$ with $K <= H$ such that $G\/K$ is isomorphic to a subgroup of $S_n$. Hence $|G\/K| | n!$ and $|G\/K| >= n$.
+]
+#proof[
+  Using the previous we get $phi : G arrow "Sym" G\/H$, and let $K$ be the kernel of $phi$. We know $K <= H$, then by the first isomorphism theorem
+  $
+    G\/K tilde.equiv im phi <= "Sym" G\/H tilde.equiv S_n
+  $
+  with Lagrange's theorem giving us $|G\/K| | |S_n| = n!$, and $|G\/K| >= |G\/H| = n$
+]
+#corollary[
+  Let $G$ be a non-Abelian simple group, let $H <= G$ be a proper subgroup of index $n$. Then $G$ is isomorphic to a subgroup of $A_n$. And we must have $n >= 5$, i.e. $G$ cannot have a subgroup of index less than $5$.
+]
+#proof[
+  The actionn of $G$ on $X = G\/H$ gives a $phi : G arrow "Sym"X$. Then $"ker" phi lt.tri G$. Since $G$ is simple, the kernel is either ${e}$ or $G$.
+
+  If it were $G$ then every element acts trivially on $X=G\/H$, but if $g in G\\H$, which exists, since the index of $H$ is not $1$, then $g * H = g H eq.not H$. So the kernel must be ${e}$.
+
+  Then by the first isomorphism theorem we get
+  $
+    G tilde.equiv im phi <= "Sym"X tilde.equiv S_n
+  $
+  now we show it is a subgroup of $A_n$.
+
+  We know $A_n lt.tri S_n$. So $im phi inter A_n lt.tri im phi tilde.equiv G$. Since $G$ simple, $im phi inter A_n$ is ${e}$ or $G = im phi$. If $im phi inter A_n = {e}$, then by the second isomorphism theorem
+  $
+    im phi tilde.equiv (im phi)/(im phi inter A_n) tilde.equiv (im phi A_n)/A_n <= S_n/A_n tilde.equiv C_2
+  $
+  so $G tilde.equiv im phi$ is a subgroup of $C_2$, i.e. ${e}$ or $C_2$. Both of these are Abelian, so this can not happen. Therefore $im phi inter A_n = im phi$, i.e. $im phi <= A_n$.
+
+  The last part follows since $S_1, S_2, S_3$ and $S_4$ have no non-Abelian simple subgroups.
+]
 
 #def[Conjugation of element][
   The conjugation of $a in G$ by $b in G$ is $b a b^(-1) in G$. Given any $a$ and $c$, if there exists some $b$ such that $c = b a b^(-1)$. Then $a$ and $c$ are conjugate.
@@ -997,17 +1213,39 @@ Conjugate elements can in some way be treated as the same.
   3. $g(h(x)) = g h x h^(-1) g^(-1) = (g h) x (g h)^(-1) = (g h)(x)$
 ]
 
+These types of actions have corresponding isomorphisms from a group $G$ to itself, this natually leads to the automorphism group, which we'll just define here:
+#def[Automorphism group][
+  The automorphism group of $G$ is
+  $
+    "Aut"G = {f: G arrow G: f "is a group isomorphism"}
+  $
+  this is a group under composition, with the identity map as the identity.
+]
+This is of course a subgroup of $"Sym"G$ and $phi : G arrow "Sym"G$ by conjugation lands in $"Aut"G$.
+
 #def[Conjugacy classes and centralizers][
-  The conjugacy classes are the orbits of the conjugacy action
-  $ "ccl"(a) = {b in G : exists g in G", " g a g^(-1) = b} $
-  the centralizers are the stabilizers, i.e. all elements that commute with some $a$
-  $ C_G (a) = {g in G : g a g^(-1) =a} = {g in G: g a = a g} $
+  The conjugacy class of $g in G$ is the orbit of $g$ under the conjugation action
+  $ "ccl"_G (g) = {h g h^(-1) : h in G} $
+  and the centralizers are the stabilizers of the conjugation action, or all elements that commute with some $g$
+  $ C_G (g) = {h in G : h g h^(-1) =g} = {h in G: h g = g h} $
 ]
 For the whole group we can define
 #def[Center of group][
   The center of $G$ is the elements that commute with all other elements
-  $ Z(G) = {g in G : "for all" a", " g a g^(-1) = a} = C(G) $
+  $
+    Z(G) = {h in G : h g h^(-1) = g "for all" g in G} = inter.big_(g in G) C_G (g) = "ker"phi
+  $
 ]
+#thm[
+  Let $G$ be a finite group. Then
+  $
+    |"ccl"(x)| = |G : C_G (x)| = |G|\/|C_G (x)|
+  $
+]
+#proof[
+  By the orbit-stabilizer theorem, for each $x in G$ we have a bijection $"ccl" (x) <-> G\/C_G (x)$.
+]
+
 #lemma[
   Let $K lt.tri G$. Then $G$ acts by conjugation on $K$.
 ]
@@ -1060,7 +1298,7 @@ For the whole group we can define
   so $g^(-1) a g in "stab"(x) => a in g "stab"(x) g^(-1)$ so $"stab"(g(x)) subset.eq g "stab"(x) g^(-1)$, similarly one can show the other direction by letting $b = g a g^(-1)$ with $a in "stab"(x)$
   $ b(g(x)) =(g a g^(-1) g) (x) = (g a)(x) = g(x) $ so $b in "stab"(g(x))$ immediately giving $"stab"(x) subset.eq g^(-1)"stab"(g(x))g => g"stab"(x)g^(-1) subset.eq "stab"(g(x))$.
 ]
-
+/*
 == Applications
 #ex[
   Let $G$ be a finite simple group of order greater than $2$, and $H <= G$ have index $n eq.not 1$. Then $|G| <= n!/2$
@@ -1087,6 +1325,8 @@ For the whole group we can define
 
   Orbits partition $X$, so the sum of all orbit sizes must be $|X|$. We have $|X| = |G|^(p-1)$, since we can freely chose the first $p-1$ entries, and the last will be their inverse. Since $p$ divides $|G|$ it also divides $|X|$. We have $|"orb"(a_1,dots,a_p)||"stab"_H (a_1,dots,a_p)| = |H|=p$. So all orbits have size $1$ or $p$, and they must sum to $|X| = "some number" times p$. We know one orbit of size $1$ $(e,e,dots,e)$. So at least $p-1$ other orbits of size $1$ must exist for the sum to be divisible by $p$. For this to be the case they must look like $(a,a,dots,a)$ for some $a in G$ which has order $p$.
 ]
+*/
+/*
 #pagebreak()
 = Symmetric groups cont.
 We'll treat conjugacy classes of $S_n "and" A_n$.
@@ -1178,7 +1418,8 @@ So now it's simply a matter of finding the conjugacy classes for $S_n$, taking a
   Normal subgroups must be unions of conjugacy classes, and must contain $e$. Since $|A_5| = 60$, their order must divide $60$. The possible orders are thus $1,2,3,4,5,6,10,12,15,20,30$. The conjugacy classes have order $1,15,20,12,12$, these can't add up to any orders expect from $1$ and $60$, thus we only have trivial normal subgroups -- meaning $A_5$ is simple.
 
 ]
-This turns out to be true for all $A_n$ with $n >= 5$, but the proof is ass.
+This turns out to be true for all $A_n$ with $n >= 5$, but the proof is ass---might add later\*.
+*/
 
 #pagebreak()
 = Quaternions
@@ -1396,6 +1637,7 @@ We extend the previous to complex matrices. We define the hermitian conjugate $ 
 
 Unitary matrices preserve the complex dot product. $( A x) dot (A y) = x dot y$.
 
+/*
 #pagebreak()
 = Regular polyhedra
 == Symmetries of the cube
@@ -1423,7 +1665,8 @@ Other than rotations we can also do reflections in the mid-point of the cube. Th
 By orbit-stabilizer it's trivial to find $|G^+| = 4 dot 3 = 12$, by acting with $G^+$ on the vertices. The action gives a homomorphism $phi:G^+ arrow S_4$. $"ker"phi = {e}$ so $G^+ <= S_4$ and $G^+$ has size $12$. The only subgroup of $S_4$ with order $12$ is $A_4$. So $G^+ tilde.equiv A_4$, so no rotation just swaps two vertices.
 
 We have some additional symmetries in the form of reflections, this ends up giving $G tilde.equiv S_4$ (stab $arrow 6$; orb $arrow 4$), since we can essentially permute all vertices while still being a tetrahedron.
-
+*/
+/*
 #pagebreak()
 = Möbius group
 == Möbius maps
@@ -1491,5 +1734,8 @@ Any map with $c = 0$ fixes $oo$.
 #proof[
   $f(z) = z => c z^2 + (d - a)z - b = 0$. A quadratic has at most two roots, unless $c = b = 0$ and $d = a$, in which case $f$ is just the identity.
 ]
+*/
 
-The rest of the chapter is rather boring and doesn't seem rather important -- permutation properties of the maps and cross-ratios.
+#pagebreak()
+= Finite p-groups, Abelian-groups and Sylow Theorems
+
